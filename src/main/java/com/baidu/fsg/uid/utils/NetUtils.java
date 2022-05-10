@@ -22,7 +22,7 @@ import java.util.Enumeration;
 
 /**
  * NetUtils
- * 
+ *
  * @author yutianbao
  */
 public abstract class NetUtils {
@@ -61,7 +61,12 @@ public abstract class NetUtils {
                 InetAddress address = addressEnumeration.nextElement();
 
                 // ignores all invalidated addresses
-                if (address.isLinkLocalAddress() || address.isLoopbackAddress() || address.isAnyLocalAddress()) {
+                // isLinkLocalAddress() 检查InetAddress是否是链接本地地址的实用程序。
+                if (address.isLinkLocalAddress()
+                        // isLoopbackAddress() 检查InetAddress是否是一个环回地址的实用程序。
+                        || address.isLoopbackAddress()
+                        // isAnyLocalAddress() 检查通配符地址中的InetAddress的实用程序。
+                        || address.isAnyLocalAddress()) {
                     continue;
                 }
 
@@ -74,7 +79,7 @@ public abstract class NetUtils {
 
     /**
      * Retrieve local address
-     * 
+     *
      * @return the string local address
      */
     public static String getLocalAddress() {

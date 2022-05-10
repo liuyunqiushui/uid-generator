@@ -25,8 +25,14 @@ import com.baidu.fsg.uid.utils.ValuedEnum;
  * @author yutianbao
  */
 public enum WorkerNodeType implements ValuedEnum<Integer> {
-
-    CONTAINER(1), ACTUAL(2);
+    /**
+     * docker 容器的方式
+     */
+    CONTAINER(1),
+    /**
+     * 真实物理机的部署方式
+     */
+    ACTUAL(2);
 
     /**
      * Lock type
@@ -35,8 +41,9 @@ public enum WorkerNodeType implements ValuedEnum<Integer> {
 
     /**
      * Constructor with field of type
+     * 枚举的构造器默认都是私有的 private
      */
-    private WorkerNodeType(Integer type) {
+    WorkerNodeType(Integer type) {
         this.type = type;
     }
 

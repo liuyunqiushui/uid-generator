@@ -90,11 +90,9 @@ public class NamingThreadFactory implements ThreadFactory {
         if (this.uncaughtExceptionHandler != null) {
             thread.setUncaughtExceptionHandler(this.uncaughtExceptionHandler);
         } else {
-            thread.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-                public void uncaughtException(Thread t, Throwable e) {
-                    LOGGER.error("unhandled exception in thread: " + t.getId() + ":" + t.getName(), e);
-                }
-            });
+            thread.setUncaughtExceptionHandler(
+                    (Thread t, Throwable e) -> LOGGER.error("unhandled exception in thread: " + t.getId() + ":" + t.getName(), e)
+                );
         }
 
         return thread;

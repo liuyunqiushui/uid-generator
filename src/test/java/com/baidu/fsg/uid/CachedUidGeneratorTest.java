@@ -32,6 +32,12 @@ public class CachedUidGeneratorTest {
     @Resource
     private UidGenerator uidGenerator;
 
+    @Test
+    public void testGenerateOne(){
+        long uid=uidGenerator.getUID();
+        System.out.println(uid);
+    }
+
     /**
      * Test for serially generate
      * 
